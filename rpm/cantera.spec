@@ -1,6 +1,6 @@
 Name:          cantera
 Version:       2.6.0
-Release:       0.1.a3%{?dist}
+Release:       0.2.a3%{?dist}
 Summary:       Chemical kinetics, thermodynamics, and transport tool suite
 License:       BSD-3-Clause
 URL:           https://github.com/Cantera/cantera/
@@ -82,7 +82,7 @@ Summary: Header files and static libraries for Cantera
 
 
 %prep
-%autosetup -n %{name}-%{version}
+%autosetup -n %{name}-main
 
 
 %build
@@ -463,6 +463,9 @@ Summary: Header files and static libraries for Cantera
 
 
 %changelog
+* Thu Dec 23 2021 <fuller@fedoraproject.org>
+- Bump dist to reflect many merged commits in a3 since October
+
 * Tue Nov 30 2021 <fuller@fedoraproject.org>
 - Introduced distro-specific IF to build on both Fedora and RHEL
 

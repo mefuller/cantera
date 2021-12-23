@@ -1,10 +1,10 @@
 Name:          cantera
 Version:       2.6.0
-Release:       0.1.a3%{?dist}
+Release:       0.2.a3%{?dist}
 Summary:       Chemical kinetics, thermodynamics, and transport tool suite
 License:       BSD-3-Clause
-URL:           https://github.com/mefuller/cantera/tree/copr
-Source0:       https://github.com/mefuller/cantera/archive/refs/tags/v%{version}.tar.gz
+URL:           https://github.com/Cantera/cantera/
+Source0:       https://github.com/Cantera/cantera/archive/main.tar.gz
 
 BuildRequires:  boost-devel
 BuildRequires:  eigen3-devel
@@ -75,7 +75,7 @@ Summary: Header files and static libraries for Cantera
 
 
 %prep
-%autosetup -n %{name}-%{version}
+%autosetup -n %{name}-main
 
 
 %build
@@ -446,6 +446,9 @@ mv %{buildroot}%{_prefix}/local/bin/ctml_writer %{buildroot}%{_prefix}/bin/ctml_
 
 
 %changelog
+* Thu Dec 23 2021 <fuller@fedoraproject.org>
+- Bump dist to reflect many merged commits in a3 since October
+
 * Tue Nov 30 2021 <fuller@fedoraproject.org>
 - Introduced distro-specific IF to build on both Fedora and RHEL
 
