@@ -1,6 +1,6 @@
 Name:          cantera
 Version:       2.6.0
-Release:       0.2.a3%{?dist}
+Release:       0.3.a4%{?dist}
 Summary:       Chemical kinetics, thermodynamics, and transport tool suite
 License:       BSD-3-Clause
 URL:           https://github.com/Cantera/cantera/
@@ -248,7 +248,7 @@ Summary: Header files and static libraries for Cantera
 %{_datadir}/%{name}/samples/f90/demo.f90
 
 %files python3
-%{python3_sitearch}/Cantera-%{version}a3-py%{python3_version}.egg-info/
+%{python3_sitearch}/Cantera-%{version}a4-py%{python3_version}.egg-info/
 %{python3_sitearch}/%{name}/
 
 %files devel
@@ -277,6 +277,7 @@ Summary: Header files and static libraries for Cantera
 %{_includedir}/%{name}/base/ct_defs.h
 %{_includedir}/%{name}/base/ctexceptions.h
 %{_includedir}/%{name}/base/ctml.h
+%{_includedir}/%{name}/base/Delegator.h
 %{_includedir}/%{name}/base/FactoryBase.h
 %{_includedir}/%{name}/base/fmt.h
 %{_includedir}/%{name}/base/global.h
@@ -442,6 +443,7 @@ Summary: Header files and static libraries for Cantera
 %{_includedir}/%{name}/zeroD/IdealGasConstPressureReactor.h
 %{_includedir}/%{name}/zeroD/IdealGasReactor.h
 %{_includedir}/%{name}/zeroD/ReactorBase.h
+%{_includedir}/%{name}/zeroD/ReactorDelegator.h
 %{_includedir}/%{name}/zeroD/ReactorFactory.h
 %{_includedir}/%{name}/zeroD/Reactor.h
 %{_includedir}/%{name}/zeroD/ReactorNet.h
@@ -463,6 +465,9 @@ Summary: Header files and static libraries for Cantera
 
 
 %changelog
+* Sun Jan 02 2022 <fuller@fedoraproject.org>
+- Bump dist to a4
+
 * Thu Dec 23 2021 <fuller@fedoraproject.org>
 - Bump dist to reflect many merged commits in a3 since October
 
