@@ -1,6 +1,6 @@
 Name:          cantera
 Version:       2.6.0
-Release:       0.4.a4%{?dist}
+Release:       0.5.a4%{?dist}
 Summary:       Chemical kinetics, thermodynamics, and transport tool suite
 License:       BSD
 URL:           https://github.com/Cantera/cantera/
@@ -61,12 +61,22 @@ Summary: Python 3 user interface for Cantera
 
 %package devel
 Requires: %{name}-common%{_isa} = %{version}-%{release}
-Summary: Header files and static libraries for Cantera
+Summary: Header files and shared object libraries for Cantera
 %description devel
 %{common_description}
  .
- These files are used for developing applications that use Cantera's
- C++ and Fortran interfaces.
+ This package contains the header files and shared object libraries needed to
+ develop applications with the C++ and Fortran interfaces of Cantera.
+
+
+%package static
+Requires: %{name}-common%{_isa} = %{version}-%{release}
+Summary: Static libraries for Cantera
+%description static
+%{common_description}
+ .
+ This package contains the static libraries for the C++ and Fortran
+ interfaces of Cantera.
 
 
 %prep
@@ -115,11 +125,9 @@ fi
 %{_includedir}/%{name}
 
 %{_libdir}/pkgconfig/cantera.pc
-%{_libdir}/libcantera.a
 %{_libdir}/libcantera.so
 %{_libdir}/libcantera.so.2
 %{_libdir}/libcantera.so.%{version}
-%{_libdir}/libcantera_fortran.a
 %{_libdir}/libcantera_fortran.so
 %{_libdir}/libcantera_fortran.so.2
 %{_libdir}/libcantera_fortran.so.%{version}
@@ -128,8 +136,15 @@ fi
 %{_bindir}/setup_cantera.csh
 
 
+%files static
+%{_libdir}/libcantera.a
+%{_libdir}/libcantera_fortran.a
+
 
 %changelog
+* Thu Jan 13 2022 Mark E. Fuller <mark.e.fuller@gmx.de> - 2.6.0-0.5.a4
+- Move static libraries from devel to static subpackage
+
 * Thu Jan 06 2022 Mark E. Fuller <mark.e.fuller@gmx.de> - 2.6.0-0.4.a4
 - Cleanup spec per Fedora package review
 
