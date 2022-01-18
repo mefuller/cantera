@@ -1,6 +1,6 @@
 Name:          cantera
 Version:       2.6.0
-Release:       0.5.a4%{?dist}
+Release:       0.6.a4%{?dist}
 Summary:       Chemical kinetics, thermodynamics, and transport tool suite
 License:       BSD
 URL:           https://github.com/Cantera/cantera/
@@ -97,6 +97,10 @@ if [ ! -f %{buildroot}%{_prefix}/bin/ck2cti ]; then
 fi
 
 
+%check
+%scons test
+
+
 %files common
 %license %{_datadir}/%{name}/doc/LICENSE.txt
 
@@ -142,6 +146,9 @@ fi
 
 
 %changelog
+* Tue Jan 18 2022 Mark E. Fuller <mark.e.fuller@gmx.de> - 2.6.0-0.6.a4
+- Final revisions for Fedora approval
+
 * Thu Jan 13 2022 Mark E. Fuller <mark.e.fuller@gmx.de> - 2.6.0-0.5.a4
 - Move static libraries from devel to static subpackage
 
