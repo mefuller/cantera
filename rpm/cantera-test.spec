@@ -152,6 +152,7 @@ Summary: Static libraries for Cantera
 %changelog
 * Tue Jan 18 2022 Mark E. Fuller <mark.e.fuller@gmx.de> - 2.6.0-0.6.a4
 - Final revisions for Fedora approval
+- Remove workaround fixed by #1172 (Issue #1149)
 
 * Thu Jan 13 2022 Mark E. Fuller <mark.e.fuller@gmx.de> - 2.6.0-0.5.a4
 - Move static libraries from devel to static subpackage

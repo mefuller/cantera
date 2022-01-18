@@ -1,10 +1,13 @@
+%global fork Cantera
+%global branch main
+
 Name:          cantera
 Version:       2.6.0
 Release:       0.6.a4%{?dist}
 Summary:       Chemical kinetics, thermodynamics, and transport tool suite
 License:       BSD
-URL:           https://github.com/Cantera/cantera/
-Source0:       %{url}archive/main.tar.gz
+URL:           https://github.com/%{fork}/cantera/
+Source0:       %{url}archive/%{branch}.tar.gz
 
 BuildRequires:  boost-devel
 BuildRequires:  eigen3-devel
@@ -81,7 +84,7 @@ Summary: Static libraries for Cantera
 
 
 %prep
-%autosetup -n %{name}-main
+%autosetup -n %{name}-%{branch}
 
 
 %build
@@ -144,7 +147,7 @@ Summary: Static libraries for Cantera
 %changelog
 * Tue Jan 18 2022 Mark E. Fuller <mark.e.fuller@gmx.de> - 2.6.0-0.6.a4
 - Final revisions for Fedora approval
-- Remove workaround fixed by #1172
+- Remove workaround fixed by #1172 (Issue #1149)
 
 * Thu Jan 13 2022 Mark E. Fuller <mark.e.fuller@gmx.de> - 2.6.0-0.5.a4
 - Move static libraries from devel to static subpackage
