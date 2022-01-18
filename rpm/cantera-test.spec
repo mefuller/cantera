@@ -102,7 +102,7 @@ Summary: Static libraries for Cantera
 
 
 %check
-%scons test
+%scons test verbose_tests=y
 
 
 %files common
