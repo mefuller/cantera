@@ -18,6 +18,7 @@ BuildRequires:  python3
 BuildRequires:  python3-Cython
 BuildRequires:  python3-devel
 BuildRequires:  python3-numpy
+BuildRequires:  python3-pytest
 BuildRequires:  python3-ruamel-yaml
 BuildRequires:  python3-scons
 BuildRequires:  sundials-devel
@@ -91,11 +92,6 @@ Summary: Static libraries for Cantera
 
 %install
 %scons install prefix=%{_prefix} libdirname=%{_lib} stage_dir=%{buildroot}
-# work around a bug in the installer: https://github.com/Cantera/cantera/issues/1149
-if [ ! -f %{buildroot}%{_prefix}/bin/ck2cti ]; then
-  mv %{buildroot}%{_prefix}/local/bin/* %{buildroot}%{_prefix}/bin
-fi
-
 
 %check
 %scons test
@@ -148,6 +144,7 @@ fi
 %changelog
 * Tue Jan 18 2022 Mark E. Fuller <mark.e.fuller@gmx.de> - 2.6.0-0.6.a4
 - Final revisions for Fedora approval
+- Remove workaround fixed by #1172
 
 * Thu Jan 13 2022 Mark E. Fuller <mark.e.fuller@gmx.de> - 2.6.0-0.5.a4
 - Move static libraries from devel to static subpackage
