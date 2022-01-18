@@ -1,9 +1,9 @@
 %global fork mefuller
-%global branch rpm
+%global branch reduce_precision
 
 Name:          cantera
 Version:       2.6.0
-Release:       0.5.a4%{?dist}
+Release:       0.6.a4%{?dist}
 Summary:       Chemical kinetics, thermodynamics, and transport tool suite
 License:       BSD
 URL:           https://github.com/%{fork}/cantera/
@@ -21,6 +21,7 @@ BuildRequires:  python3
 BuildRequires:  python3-Cython
 BuildRequires:  python3-devel
 BuildRequires:  python3-numpy
+BuildRequires:  python3-pytest
 BuildRequires:  python3-ruamel-yaml
 BuildRequires:  python3-scons
 BuildRequires:  sundials-devel
@@ -100,6 +101,10 @@ Summary: Static libraries for Cantera
 # fi
 
 
+%check
+%scons test
+
+
 %files common
 %license %{_datadir}/%{name}/doc/LICENSE.txt
 
@@ -145,6 +150,9 @@ Summary: Static libraries for Cantera
 
 
 %changelog
+* Tue Jan 18 2022 Mark E. Fuller <mark.e.fuller@gmx.de> - 2.6.0-0.6.a4
+- Final revisions for Fedora approval
+
 * Thu Jan 13 2022 Mark E. Fuller <mark.e.fuller@gmx.de> - 2.6.0-0.5.a4
 - Move static libraries from devel to static subpackage
 
