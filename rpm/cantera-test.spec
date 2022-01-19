@@ -33,6 +33,11 @@ BuildRequires:  gcc-fortran
 BuildRequires:  gcc-gfortran
 %endif
 
+
+ExcludeArch: s390x    # test failures - need to report upstream
+ExcludeArch: ppc64le  # Rawhide build failure - need to report
+
+
 %global scons scons%{?rhel:-3}
 
 
