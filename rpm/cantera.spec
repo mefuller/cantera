@@ -6,7 +6,7 @@ Version:       2.6.0
 Release:       0.6.a4%{?dist}
 Summary:       Chemical kinetics, thermodynamics, and transport tool suite
 License:       BSD
-URL:           https://github.com/%{fork}/cantera/
+URL:           https://github.com/%{fork}/%{name}/
 Source0:       %{url}archive/%{branch}.tar.gz
 
 BuildRequires:  boost-devel
@@ -36,6 +36,10 @@ BuildRequires:  gcc-gfortran
 %global scons scons%{?rhel:-3}
 
 
+ExcludeArch: s390x    # test failures - need to report upstream & file bug
+ExcludeArch: ppc64le  # Rawhide build failure - need to report & file bug
+
+
 %global common_description %{expand: \
  Cantera is a suite of object-oriented software tools for solving problems
  involving chemical kinetics, thermodynamics, and/or transport processes.
@@ -47,6 +51,7 @@ BuildRequires:  gcc-gfortran
 %description
 %{common_description}
 
+
 %package common
 Summary: Common files needed for all Cantera interfaces
 %description common
@@ -55,6 +60,7 @@ Summary: Common files needed for all Cantera interfaces
  This package includes programs for parsing and converting chemical
  mechanisms, a set of common mechanism files, and several sample problems.
 
+
 %package python3
 Requires: %{name}-common%{_isa} = %{version}-%{release}
 Summary: Python 3 user interface for Cantera
@@ -62,6 +68,7 @@ Summary: Python 3 user interface for Cantera
 %{common_description}
  .
  This package includes the Cantera Python 3 module.
+
 
 %package devel
 Requires: %{name}-common%{_isa} = %{version}-%{release}
@@ -95,6 +102,7 @@ Summary: Static libraries for Cantera
 
 %install
 %scons install prefix=%{_prefix} libdirname=%{_lib} stage_dir=%{buildroot}
+
 
 %check
 %scons test
@@ -145,9 +153,12 @@ Summary: Static libraries for Cantera
 
 
 %changelog
-* Tue Jan 18 2022 Mark E. Fuller <mark.e.fuller@gmx.de> - 2.6.0-0.6.a4
+* Wed Jan 19 2022 Mark E. Fuller <mark.e.fuller@gmx.de> - 2.6.0-0.6.a4
 - Final revisions for Fedora approval
 - Remove workaround fixed by #1172 (Issue #1149)
+- Version for first Fedora builds
+- Exclude s390x due to failing tests
+- Exclude ppc64le due to build fail in Rawhide
 
 * Thu Jan 13 2022 Mark E. Fuller <mark.e.fuller@gmx.de> - 2.6.0-0.5.a4
 - Move static libraries from devel to static subpackage
