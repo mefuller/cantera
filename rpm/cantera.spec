@@ -37,7 +37,10 @@ BuildRequires:  gcc-gfortran
 
 
 ExcludeArch: s390x    # test failures - need to report upstream & file bug
+
+%if 0%{?fedora} >= 36
 ExcludeArch: ppc64le  # Rawhide build failure - need to report & file bug
+%endif
 
 
 %global common_description %{expand: \
@@ -158,7 +161,7 @@ Summary: Static libraries for Cantera
 - Remove workaround fixed by #1172 (Issue #1149)
 - Version for first Fedora builds
 - Exclude s390x due to failing tests
-- Exclude ppc64le due to build fail in Rawhide
+- Exclude ppc64le in Rawhide due to build segfaults
 - Rename Python package to follow Fedora standards
 
 * Thu Jan 13 2022 Mark E. Fuller <mark.e.fuller@gmx.de> - 2.6.0-0.5.a4
