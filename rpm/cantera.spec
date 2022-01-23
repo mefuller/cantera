@@ -36,10 +36,10 @@ BuildRequires:  gcc-gfortran
 %global scons scons%{?rhel:-3}
 
 
-ExcludeArch: s390x    # test failures - need to report upstream & file bug
+ExcludeArch: s390x    # YAML test failures - BZ #2044056 
 
 %if 0%{?fedora} >= 36
-ExcludeArch: ppc64le  # Rawhide build failure - need to report & file bug
+ExcludeArch: ppc64le  # Rawhide build failure - BZ #2044054 
 %endif
 
 
