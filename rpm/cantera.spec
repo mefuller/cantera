@@ -61,10 +61,10 @@ Summary: Common files needed for all Cantera interfaces
  mechanisms, a set of common mechanism files, and several sample problems.
 
 
-%package python3
+%package -n python3-%{name}
 Requires: %{name}-common%{_isa} = %{version}-%{release}
 Summary: Python 3 user interface for Cantera
-%description python3
+%description -n python3-%{name}
 %{common_description}
  .
  This package includes the Cantera Python 3 module.
@@ -127,7 +127,7 @@ Summary: Static libraries for Cantera
 %{_datadir}/%{name}
 
 
-%files python3
+%files -n python3-%{name}
 %{python3_sitearch}/Cantera-%{version}a4-py%{python3_version}.egg-info/
 %{python3_sitearch}/%{name}/
 
@@ -153,12 +153,13 @@ Summary: Static libraries for Cantera
 
 
 %changelog
-* Wed Jan 19 2022 Mark E. Fuller <mark.e.fuller@gmx.de> - 2.6.0-0.6.a4
+* Sun Jan 23 2022 Mark E. Fuller <mark.e.fuller@gmx.de> - 2.6.0-0.6.a4
 - Final revisions for Fedora approval
 - Remove workaround fixed by #1172 (Issue #1149)
 - Version for first Fedora builds
 - Exclude s390x due to failing tests
 - Exclude ppc64le due to build fail in Rawhide
+- Rename Python package to follow Fedora standards
 
 * Thu Jan 13 2022 Mark E. Fuller <mark.e.fuller@gmx.de> - 2.6.0-0.5.a4
 - Move static libraries from devel to static subpackage
