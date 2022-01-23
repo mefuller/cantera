@@ -3,7 +3,7 @@
 
 Name:          cantera
 Version:       2.6.0
-Release:       0.6.a4%{?dist}
+Release:       0.7.a4%{?dist}
 Summary:       Chemical kinetics, thermodynamics, and transport tool suite
 License:       BSD
 URL:           https://github.com/%{fork}/%{name}/
@@ -156,6 +156,9 @@ Summary: Static libraries for Cantera
 
 
 %changelog
+* Sun Jan 23 2022 Mark E. Fuller <mark.e.fuller@gmx.de> - 2.6.0-0.7.a4
+- first real Fedora deploy
+
 * Sun Jan 23 2022 Mark E. Fuller <mark.e.fuller@gmx.de> - 2.6.0-0.6.a4
 - Final revisions for Fedora approval
 - Remove workaround fixed by #1172 (Issue #1149)
