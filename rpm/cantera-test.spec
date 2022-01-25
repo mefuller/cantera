@@ -3,7 +3,7 @@
 
 Name:          cantera
 Version:       2.6.0
-Release:       0.6.a4%{?dist}
+Release:       0.7.a4%{?dist}
 Summary:       Chemical kinetics, thermodynamics, and transport tool suite
 License:       BSD
 URL:           https://github.com/%{fork}/%{name}/
@@ -34,6 +34,13 @@ BuildRequires:  gcc-gfortran
 %endif
 
 %global scons scons%{?rhel:-3}
+
+
+#ExcludeArch: s390x    # YAML test failures - BZ #2044056 
+
+#%if 0%{?fedora} >= 36
+#ExcludeArch: ppc64le  # Rawhide build failure - BZ #2044054 
+#%endif
 
 
 %global common_description %{expand: \
@@ -149,12 +156,15 @@ Summary: Static libraries for Cantera
 
 
 %changelog
+* Sun Jan 23 2022 Mark E. Fuller <mark.e.fuller@gmx.de> - 2.6.0-0.7.a4
+- first real Fedora deploy
+
 * Sun Jan 23 2022 Mark E. Fuller <mark.e.fuller@gmx.de> - 2.6.0-0.6.a4
 - Final revisions for Fedora approval
 - Remove workaround fixed by #1172 (Issue #1149)
 - Version for first Fedora builds
 - Exclude s390x due to failing tests
-- Exclude ppc64le due to build fail in Rawhide
+- Exclude ppc64le in Rawhide due to build segfaults
 - Rename Python package to follow Fedora standards
 
 * Thu Jan 13 2022 Mark E. Fuller <mark.e.fuller@gmx.de> - 2.6.0-0.5.a4
