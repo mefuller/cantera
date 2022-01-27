@@ -99,6 +99,10 @@ Summary: Static libraries for Cantera
 %install
 %scons install prefix=%{_prefix} libdirname=%{_lib} stage_dir=%{buildroot}
 
+# not required for packaged installations
+rm %{_bindir}/setup_cantera
+rm %{_bindir}/setup_cantera.csh
+
 
 %check
 %scons test verbose_tests=y
@@ -138,9 +142,6 @@ Summary: Static libraries for Cantera
 %{_libdir}/libcantera_fortran.so
 %{_libdir}/libcantera_fortran.so.2
 %{_libdir}/libcantera_fortran.so.%{version}
-
-%{_bindir}/setup_cantera
-%{_bindir}/setup_cantera.csh
 
 
 %files static
