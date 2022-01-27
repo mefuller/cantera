@@ -129,6 +129,10 @@ Summary: Static libraries for Cantera
 
 %{_datadir}/%{name}
 
+# not required for packaged installations
+%ghost %{_bindir}/setup_cantera
+%ghost %{_bindir}/setup_cantera.csh
+
 
 %files -n python3-%{name}
 %{python3_sitearch}/Cantera-%{version}a4-py%{python3_version}.egg-info/
@@ -145,9 +149,6 @@ Summary: Static libraries for Cantera
 %{_libdir}/libcantera_fortran.so
 %{_libdir}/libcantera_fortran.so.2
 %{_libdir}/libcantera_fortran.so.%{version}
-
-%{_bindir}/setup_cantera
-%{_bindir}/setup_cantera.csh
 
 
 %files static
