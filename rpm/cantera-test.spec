@@ -99,10 +99,6 @@ Summary: Static libraries for Cantera
 %install
 %scons install prefix=%{_prefix} libdirname=%{_lib} stage_dir=%{buildroot}
 
-# not required for packaged installations
-rm %{buildroot}%{_bindir}/setup_cantera
-rm %{buildroot}%{_bindir}/setup_cantera.csh
-
 
 %check
 %scons test verbose_tests=y
@@ -125,6 +121,10 @@ rm %{buildroot}%{_bindir}/setup_cantera.csh
 %{_bindir}/ctml_writer
 
 %{_datadir}/%{name}
+
+# not required for packaged installations
+%ghost %{_bindir}/setup_cantera
+%ghost %{_bindir}/setup_cantera.csh
 
 
 %files -n python3-%{name}
