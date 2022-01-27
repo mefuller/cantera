@@ -100,8 +100,8 @@ Summary: Static libraries for Cantera
 %scons install prefix=%{_prefix} libdirname=%{_lib} stage_dir=%{buildroot}
 
 # not required for packaged installations
-rm %{_bindir}/setup_cantera
-rm %{_bindir}/setup_cantera.csh
+rm %{buildroot}%{_bindir}/setup_cantera
+rm %{buildroot}%{_bindir}/setup_cantera.csh
 
 
 %check
