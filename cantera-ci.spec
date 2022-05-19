@@ -90,7 +90,7 @@ Summary: Static libraries for Cantera
 
 
 %prep
-%autosetup -n cantera-v2.6.0b2
+%autosetup -n cantera-%{branch}
 
 
 %build
