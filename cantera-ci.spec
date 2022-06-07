@@ -1,9 +1,10 @@
 %global fork Cantera
 %global branch main
+%global vmod a1
 
 Name:          cantera
-Version:       2.6.0
-Release:       ci%{?dist}
+Version:       3.0.0
+Release:       %{vmod}%{?dist}
 Summary:       Chemical kinetics, thermodynamics, and transport tool suite
 License:       BSD
 URL:           https://github.com/%{fork}/%{name}/
@@ -18,15 +19,15 @@ BuildRequires:  gcc-c++
 BuildRequires:  git
 BuildRequires:  gmock-devel
 BuildRequires:  gtest-devel
-BuildRequires:  python3
-BuildRequires:  python3-Cython
-BuildRequires:  python3-devel
-BuildRequires:  python3-numpy
-BuildRequires:  python3-pip
-BuildRequires:  python3-pytest
+BuildRequires:  python3%{?rhel:8}
+BuildRequires:  python3%{?rhel:8}-Cython
+BuildRequires:  python3%{?rhel:8}-devel
+BuildRequires:  python3%{?rhel:8}-numpy
+BuildRequires:  python3%{?rhel:8}-pip
+BuildRequires:  python3%{?rhel:8}-pytest
 BuildRequires:  python3-ruamel-yaml
 BuildRequires:  python3-scons
-BuildRequires:  python3-wheel
+BuildRequires:  python3%{?rhel:8}-wheel
 BuildRequires:  sundials-devel
 BuildRequires:  yaml-cpp-devel
 
@@ -106,6 +107,7 @@ Summary: Static libraries for Cantera
 
 # incorrect installation to /usr/local/bin on F36+
 %if 0%{?fedora} >= 36
+mkdir -p %{buildroot}%{_bindir}/
 mv %{buildroot}%{_prefix}/local/bin/* %{buildroot}%{_bindir}/
 rm -rf %{buildroot}%{_prefix}/local/bin
 %endif
@@ -138,17 +140,13 @@ rm -rf %{buildroot}%{_prefix}/local/
 %license %{_datadir}/%{name}/doc/LICENSE.txt
 
 %doc AUTHORS README.rst
-%doc %{_mandir}/man1/ck2cti.1.gz
 %doc %{_mandir}/man1/ck2yaml.1.gz
 %doc %{_mandir}/man1/cti2yaml.1.gz
 %doc %{_mandir}/man1/ctml2yaml.1.gz
-%doc %{_mandir}/man1/ctml_writer.1.gz
 
-%{_bindir}/ck2cti
 %{_bindir}/ck2yaml
 %{_bindir}/cti2yaml
 %{_bindir}/ctml2yaml
-%{_bindir}/ctml_writer
 
 %{_datadir}/%{name}
 
@@ -158,18 +156,18 @@ rm -rf %{buildroot}%{_prefix}/local/
 
 
 %files -n python3-%{name}
-%{python3_sitearch}/Cantera-%{version}.dist-info/
 %{python3_sitearch}/%{name}/
+%{python3_sitearch}/Cantera-%{version}%{vmod}.dist-info/
 
 %files devel
 %{_includedir}/%{name}
 
 %{_libdir}/pkgconfig/cantera.pc
 %{_libdir}/libcantera.so
-%{_libdir}/libcantera.so.2
+%{_libdir}/libcantera.so.3
 %{_libdir}/libcantera.so.%{version}
 %{_libdir}/libcantera_fortran.so
-%{_libdir}/libcantera_fortran.so.2
+%{_libdir}/libcantera_fortran.so.3
 %{_libdir}/libcantera_fortran.so.%{version}
 
 
@@ -180,5 +178,8 @@ rm -rf %{buildroot}%{_prefix}/local/
 
 
 %changelog
+* Thu May 26 2022 Mark E. Fuller <fuller@fedoraproject.org> - 3.0.0-ci
+- Update for version 3.0.0
+
 * Tue May 3 2022 Mark E. Fuller <fuller@fedoraproject.org> - 2.6.0-ci
 - Spec for CI on COPR (nightly/triggered)
